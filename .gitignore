@@ -1,0 +1,22 @@
+# Dependencies
+**/node_modules/
+
+# Build output and caches
+**/bin/
+**/obj/
+**/dist/
+**/.angular/cache/
+
+# IDE and user-specific files
+**/.vs/
+*.user
+*.suo
+
+# Local environment settings
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db
