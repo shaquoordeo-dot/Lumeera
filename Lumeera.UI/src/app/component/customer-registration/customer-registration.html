@@ -1,0 +1,56 @@
+<main id="customer-registration" class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-12 col-lg-8">
+			<div class="card shadow-sm">
+				<div class="card-header bg-primary text-white">
+					<h1 class="h4 mb-0">Customer Registration</h1>
+				</div>
+				<div class="card-body">
+					<form>
+						<div class="row g-3">
+							<div class="col-md-6">
+								<label for="firstName" class="form-label">First name</label>
+								<input id="firstName" name="firstName" type="text" class="form-control" value="abdul" required>
+							</div>
+							<div class="col-md-6">
+								<label for="lastName" class="form-label">Last name</label>
+								<input id="lastName" name="lastName" type="text" class="form-control" value="shaquoor" required>
+							</div>
+							<div class="col-md-6">
+								<label for="email" class="form-label">Email</label>
+								<input id="email" name="email" type="email" class="form-control" value="shaquoor@gmail.com" required>
+							</div>
+							<div class="col-md-6">
+								<label for="phone" class="form-label">Phone</label>
+								<input id="phone" name="phone" type="tel" class="form-control" value="8882867555">
+							</div>
+							<div class="col-12">
+								<label for="passwordHash" class="form-label">Password</label>
+								<input id="passwordHash" name="passwordHash" type="password" class="form-control" autocomplete="new-password" required>
+								<div class="form-text">Enter a password; do not prefill or display a stored password hash.</div>
+							</div>
+							<div class="col-md-6">
+								<label for="customerId" class="form-label">Customer ID</label>
+								<input id="customerId" name="id" type="number" class="form-control" value="1" readonly>
+							</div>
+							<div class="col-md-6">
+								<label for="createdUtc" class="form-label">Created (UTC)</label>
+								<input id="createdUtc" name="createdUtc" type="datetime-local" class="form-control" value="2026-10-13T16:43:46" readonly>
+							</div>
+							<div class="col-12">
+								<div class="form-check">
+									<input id="isActive" name="isActive" type="checkbox" class="form-check-input" checked>
+									<label for="isActive" class="form-check-label">Active customer</label>
+								</div>
+							</div>
+							<div class="col-12 d-flex gap-2 pt-2">
+								<button type="submit" class="btn btn-primary">Save customer</button>
+								<button type="reset" class="btn btn-outline-secondary">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
