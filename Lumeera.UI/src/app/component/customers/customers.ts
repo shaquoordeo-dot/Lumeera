@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, signal } from '@angular/core';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer-service';
-import { NgForOf } from '../../../../node_modules/@angular/common/types/_common_module-chunk';
 
 @Component({
-  imports: [NgForOf],
+  imports: [CommonModule],
   selector: 'app-customers',
   styleUrl: './customers.css',
   templateUrl: './customers.html',
 })
-export class Customers implements OnInit{
-  customers:Customer[]=[];
-  constructor(private customerService:CustomerService){}
+export class Customers implements OnInit {
+  customers = signal<Customer[]>([]);
+  loading = signal(true);
+  loadError = signal<string | null>(null);
+
+  constructor(private customerService: CustomerService) {}
+
   ngOnInit(): void {
     this.customerService.getAllCustomers().subscribe({
-      next:(data)=>{
-        this.customers=data;
-      },    
-    error:(err)=>{
-      console.error('error fetching customer',err)
-    }
-    })
+      next: (data) => {
+         console.log('Customers response:', data);
+        this.customers.set(data);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        console.error('Error fetching customers', err);
+        this.loadError.set('Unable to load customers. Check that the API is running and try again.');
+        this.loading.set(false);
+      },
+    });
   }
 }

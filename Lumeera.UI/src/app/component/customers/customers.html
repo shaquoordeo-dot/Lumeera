@@ -26,8 +26,7 @@
             </thead>
 
             <tbody>
-                <!-- Customer Records -->
-                <tr *ngFor="let customer of customers">
+                <tr *ngFor="let customer of customers()">
                     <td>{{ customer.id }}</td>
                     <td>{{ customer.firstName }}</td>
                     <td>{{ customer.lastName }}</td>
@@ -35,8 +34,15 @@
                     <td>{{ customer.phone }}</td>
                 </tr>
 
-                <!-- No Data Message -->
-                <tr *ngIf="customers && customers.length === 0">
+                <tr *ngIf="loading()">
+                    <td colspan="5" class="text-center py-4">Loading customers...</td>
+                </tr>
+
+                <tr *ngIf="loadError()">
+                    <td colspan="5" class="text-center text-danger py-4">{{ loadError() }}</td>
+                </tr>
+
+                <tr *ngIf="!loading() && customers().length === 0">
                     <td colspan="5" class="text-center py-5">
                         <p class="fw-semibold mb-1">No customers yet</p>
                         <p class="text-body-secondary mb-3">
